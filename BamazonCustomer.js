@@ -39,7 +39,7 @@ function runSearch() {
         choices: ["Choose an item", "Exit"]
     }).then(function (answer) {
         // Another way to do If statements
-        // User will "choose either item" or "exit"
+        // User will "choose either item" or "Exit"
         switch (answer.action) {
             case "Choose an item":
                 displayProducts();
@@ -78,6 +78,16 @@ function displayProducts() {
             console.log("Item ID: " + res[i].item_id +
                 " || Product Name: " + res[i].product_name + " || Price: " + res[i].price);
         }
+
+        console.log("==================================");
+
+        // Prompting user on the ID of the product h/she would like to buy
+
+        inquirer.prompt({
+            name: "item_id",
+            message: "What is the ID of the product you would like to purchase?",
+            type: "input",
+        }).
 
     });
 }
