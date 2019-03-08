@@ -81,13 +81,21 @@ function displayProducts() {
 
         console.log("==================================");
 
-        // Prompting user on the ID of the product h/she would like to buy
+        // Prompting user for the name on the ID of the product h/she would like to buy
 
         inquirer.prompt({
             name: "item_id",
             message: "What is the ID of the product you would like to purchase?",
             type: "input",
-        }).
-
-    });
+            validate: function (value) {
+                
+                //Checking whether item_id is a number and if it exists
+                if (isNaN(value) === false) {
+                    return true;
+                } else {
+                    console.log("\n Please enter a valid item ID.");
+                    return false;
+                }
+            }
+    }).
 }
