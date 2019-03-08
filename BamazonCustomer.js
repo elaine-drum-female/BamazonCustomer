@@ -31,7 +31,7 @@ connection.connect(function (err) {
 
 // Prompt user by asking what h/she would like to do
 
-function displayProducts() {
+function runSearch() {
     inquirer.prompt({
         name: "action",
         type: "rawlist",
