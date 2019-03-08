@@ -31,24 +31,34 @@ connection.connect(function (err) {
 
 // Prompt user by asking what h/she would like to do
 
-function displayProducts(){
+function displayProducts() {
     inquirer.prompt({
-        name:"action",
-        type:"rawlist",
-        message:"What would you like to do?",
-        choices: [ "Choose an item", "Exit"
-        ]
+        name: "action",
+        type: "rawlist",
+        message: "What would you like to do?",
+        choices: ["Choose an item", "Exit"]
     }).then(function (answer) {
         // Another way to do If statements
         // User will "choose either item" or "exit"
-        switch(answer.action) {
+        switch (answer.action) {
             case "Choose an item":
-            displayProducts();
-            break;
+                displayProducts();
+                break;
 
             case "Exit":
-            connection.end();
-            break;
+                connection.end();
+                break;
         }
     });
 }
+
+// Declare Global Variables
+
+var welcome = "\n **********************************\n" +
+    " ****     WELCOME TO BAMAZON   ***** \n" +
+    " ****   Please let me know if you need any assistance.   **** \n" +
+    " ****          Happy browsing!   **** \n\r"
+
+var goodbye = "\n **********************************\n" +
+    " ****     THANKS FOR SHOPPING AT BAMAZON   ***** \n" +
+    " ****  Have a great day!   **** \n"
