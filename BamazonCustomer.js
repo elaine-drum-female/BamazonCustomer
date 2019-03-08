@@ -62,3 +62,22 @@ var welcome = "\n **********************************\n" +
 var goodbye = "\n **********************************\n" +
     " ****     THANKS FOR SHOPPING AT BAMAZON   ***** \n" +
     " ****  Have a great day!   **** \n"
+
+// Display Products to show all the items that are for sale
+
+function displayProducts() {
+    console.log(welcome);
+
+    // Connect to Bamazon_db in order to select all items from products table
+
+    connection.query("SELECT * FROM products", function (err, res) {
+        if (err) throw err;
+
+        // Loop over how many response items are in its length
+        for (var i = 0; i < res.length; i++) {
+            console.log("Item ID: " + res[i].item_id +
+                " || Product Name: " + res[i].product_name + " || Price: " + res[i].price);
+        }
+
+    });
+}
