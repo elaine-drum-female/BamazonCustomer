@@ -101,7 +101,7 @@ function displayProducts() {
                     // Connect to Bamazon_db in order to select all items from products table and to filter out rows based on their conditions
                     connection.query("SELECT item_id, product_name, price FROM products WHERE ?", {
                             item_id: answer.item_id
-                        }, function(err, res) {
+                        }, function (err, res) {
                             for (var i = 0; i < res.length; i++) {
                                 console.log("Item ID: " + res[i].item_id + " || Product Name: " + res[i].product_name + " || Price: " + res[i].price);
                             }
@@ -125,48 +125,50 @@ function displayProducts() {
                             for (var i = 0; i < res.length; i++) {
                                 //Capturing and storing the values of: prices, quantity, the users quantity and the total
                                 var price = res[i].price;
-                
+
                                 //Converting the qty value to an integer
                                 var qty = parseInt(res[i].stock_quantity);
                                 var qtyNum = parseInt(answer.qty);
                                 var total;
-                
-                                if(qty >= qtyNum) {
+
+                                if (qty >= qtyNum) {
                                     var quantityLeft = qty - qtyNum;
-                
+
                                     console.log("Updating all inquiries...\n");
 
                                     connection.query("UPDATE products SET ? WHERE ?",
-                                    [
-                                        {
-                                            stock_quantity: quantityLeft
-                                        },
-    
-                                        {
-                                            item_id: res[i].item_id
-                                        }
-                                    ],
-    
-                                    function () {
-                                        runSearch();
-                                    }
-    
-                                );
+                                        [{
+                                                stock_quantity: quantityLeft
+                                            },
 
-                                for (var i = 0; i < res.length; i++) {
-                                    total = parseInt(price * qtyNum);
-    
-                                    
-                                    console.log("Congrats! You bought " + res[i].item_id + " " + res[i].product_name + " for " + "$" + total.toFixed() + " successfully!");
-                                }
-    
+                                            {
+                                                item_id: res[i].item_id
+                                            }
+                                        ],
+
+                                        function () {
+                                            runSearch();
+                                        }
+
+                                    );
+
+                                    for (var i = 0; i < res.length; i++) {
+                                        total = parseInt(price * qtyNum);
+
+
+                                        console.log("Congrats! You bought " + res[i].item_id + " " + res[i].product_name + " for " + "$" + total.toFixed() + " successfully!");
+                                    }
+
                                     console.log(goodbye);
 
+                                } else {
+                                    console.log("Insufficient quantity!");
+                                    runSearch();
                                 }
-                
-                        };
 
-                    );
+                            };
+                        });
+                    });
             });
     });
 };
