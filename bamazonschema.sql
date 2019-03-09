@@ -1,12 +1,8 @@
-CREATE DATABASE products_db;
+DROP DATABASE IF EXISTS bamazon_DB;
+CREATE DATABASE bamazon_DB;
 
-USE products_gb;
+USE bamazon_DB;
 
-CREATE TABLE `products` (
-  `item_id` int(11) NOT NULL,
-  `product_name` varchar(45) NOT NULL,
-  `department_name` varchar(45) NOT NULL,
-  `price` decimal(10,4) DEFAULT NULL,
-  `stock_quantity` int(11) DEFAULT NULL,
-  PRIMARY KEY (`item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO products (item_id, product_name, department_name, price, stock_quantity)
+VALUES (10, "Elaine's Camping Tent", "Camping", 300.00, 2);
+
