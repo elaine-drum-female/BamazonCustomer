@@ -105,7 +105,23 @@ function displayProducts() {
                             for (var i = 0; i < res.length; i++) {
                                 console.log("Item ID: " + res[i].item_id + " || Product Name: " + res[i].product_name + " || Price: " + res[i].price);
                             }
-                        }
+                        },
+
+                        // Prompting user on the number of units based on the product they would like to purchase. 
+
+                        inquirer.prompt({
+                            name: "qty",
+                            message: "How many units are you wanting to buy?",
+                            type: "input",
+                            validate: function (value) {
+                                if (isNaN(value) === false) {
+                                    return true;
+                                } else {
+                                    console.log("\n Please enter a valid quantity.");
+                                    return false;
+                                }
+                            }
+                        })
 
                     );
             });
