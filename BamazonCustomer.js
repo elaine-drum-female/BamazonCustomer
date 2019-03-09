@@ -88,7 +88,7 @@ function displayProducts() {
             message: "What is the ID of the product you would like to purchase?",
             type: "input",
             validate: function (value) {
-                
+
                 //Checking whether item_id is a number and if it exists
                 if (isNaN(value) === false) {
                     return true;
@@ -97,5 +97,16 @@ function displayProducts() {
                     return false;
                 }
             }
-    }).
-}
+        }).then(function (answer) {
+            for (var i = 0; i < res.length; i++) {
+                //Capturing and storing the values of: prices, quantity, the users quantity and the total
+                var price = res[i].price;
+
+                //Converting the qty value to an integer
+                var qty = parseInt(res[i].stock_quantity);
+                var qtyNum = parseInt(answer.qty);
+                var total;
+            }
+        });
+    });
+};
