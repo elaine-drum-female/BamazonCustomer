@@ -71,42 +71,43 @@ function displayProducts() {
     // Connect to Bamazon_db in order to select all items from products table
 
     connection.query("SELECT * FROM products", function (err, res) {
-        if (err) throw err;
+            if (err) throw err;
 
-        // Loop over how many response items are in its length
-        for (var i = 0; i < res.length; i++) {
-            console.log("Item ID: " + res[i].item_id +
-                " || Product Name: " + res[i].product_name + " || Price: " + res[i].price);
-        }
-
-        console.log("==================================");
-
-        // Prompting user for the name on the ID of the product h/she would like to buy
-
-        inquirer.prompt({
-            name: "item_id",
-            message: "What is the ID of the product you would like to purchase?",
-            type: "input",
-            validate: function (value) {
-
-                //Checking whether item_id is a number and if it exists
-                if (isNaN(value) === false) {
-                    return true;
-                } else {
-                    console.log("\n Please enter a valid item ID.");
-                    return false;
-                }
-            }
-        }).then(function (answer) {
+            // Loop over how many response items are in its length
             for (var i = 0; i < res.length; i++) {
-                //Capturing and storing the values of: prices, quantity, the users quantity and the total
-                var price = res[i].price;
-
-                //Converting the qty value to an integer
-                var qty = parseInt(res[i].stock_quantity);
-                var qtyNum = parseInt(answer.qty);
-                var total;
+                console.log("Item ID: " + res[i].item_id +
+                    " || Product Name: " + res[i].product_name + " || Price: " + res[i].price);
             }
-        });
+
+            console.log("==================================");
+
+            // Prompting user for the name on the ID of the product h/she would like to buy
+
+            inquirer.prompt({
+                name: "item_id",
+                message: "What is the ID of the product you would like to purchase?",
+                type: "input",
+                validate: function (value) {
+
+                    //Checking whether item_id is a number and if it exists
+                    if (isNaN(value) === false) {
+                        return true;
+                    } else {
+                        console.log("\n Please enter a valid item ID.");
+                        return false;
+                    }
+                }
+            }).then(function (answer) {
+                    // Connect to Bamazon_db in order to select all items from products table and to filter out rows based on their conditions
+                    connection.query("SELECT item_id, product_name, price FROM products WHERE ?", {
+                            item_id: answer.item_id
+                        }, function(err, res) {
+                            for (var i = 0; i < res.length; i++) {
+                                console.log("Item ID: " + res[i].item_id + " || Product Name: " + res[i].product_name + " || Price: " + res[i].price);
+                            }
+                        }
+
+                    );
+            });
     });
 };
