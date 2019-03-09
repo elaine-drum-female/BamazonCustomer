@@ -49,3 +49,12 @@ Please submit the link to the Github Repository!
 
 
 * If this activity took you between 8-10 hours, then you've put enough time into this assignment. Feel free to stop here -- unless you want to take on the next challenge.
+
+# Screenshots
+![](https://github.com/elaine-drum-female/BamazonCustomer/blob/master/inquirer-prompt-user.jpg)
+
+![](https://github.com/elaine-drum-female/BamazonCustomer/blob/master/inquirer-displaying-ID-chosen.jpg)
+
+![](https://github.com/elaine-drum-female/BamazonCustomer/blob/master/inquirer-successfully-updating-price-of-product.jpg)
+
+
