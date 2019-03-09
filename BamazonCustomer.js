@@ -136,7 +136,23 @@ function displayProducts() {
                 
                                     console.log("Updating all inquiries...\n");
 
-                                    
+                                    connection.query("UPDATE products SET ? WHERE ?",
+                                    [
+                                        {
+                                            stock_quantity: quantityLeft
+                                        },
+    
+                                        {
+                                            item_id: res[i].item_id
+                                        }
+                                    ],
+    
+                                    function () {
+                                        runSearch();
+                                    }
+    
+                                );
+
                                 }
                 
                         };
