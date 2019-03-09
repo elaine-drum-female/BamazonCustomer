@@ -121,7 +121,25 @@ function displayProducts() {
                                     return false;
                                 }
                             }
-                        })
+                        }).then(function (answer) {
+                            for (var i = 0; i < res.length; i++) {
+                                //Capturing and storing the values of: prices, quantity, the users quantity and the total
+                                var price = res[i].price;
+                
+                                //Converting the qty value to an integer
+                                var qty = parseInt(res[i].stock_quantity);
+                                var qtyNum = parseInt(answer.qty);
+                                var total;
+                
+                                if(qty >= qtyNum) {
+                                    var quantityLeft = qty - qtyNum;
+                
+                                    console.log("Updating all inquiries...\n");
+
+                                    
+                                }
+                
+                        };
 
                     );
             });
