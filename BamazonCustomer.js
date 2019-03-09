@@ -153,6 +153,15 @@ function displayProducts() {
     
                                 );
 
+                                for (var i = 0; i < res.length; i++) {
+                                    total = parseInt(price * qtyNum);
+    
+                                    
+                                    console.log("Congrats! You bought " + res[i].item_id + " " + res[i].product_name + " for " + "$" + total.toFixed() + " successfully!");
+                                }
+    
+                                    console.log(goodbye);
+
                                 }
                 
                         };
