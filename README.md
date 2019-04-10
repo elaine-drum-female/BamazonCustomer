@@ -57,4 +57,8 @@ Please submit the link to the Github Repository!
 
 ![](https://github.com/elaine-drum-female/BamazonCustomer/blob/master/inquirer-successfully-updating-price-of-product.jpg)
 
+# Walkthrough Video Link
+
+[BamazonCustomer App](https://www.youtube.com/watch?v=HEBtcjtp6UY&feature=youtu.be)
+
 
